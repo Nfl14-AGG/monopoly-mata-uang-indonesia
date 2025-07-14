@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monopoli Indonesia Modern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="setup-container">
+        <div class="setup-box">
+            <i class="fa-solid fa-dice-d20 setup-icon"></i>
+            <h1>Monopoli Indonesia</h1>
+            <p>Masukkan nama pemain dan pilih aturan untuk memulai!</p>
+            <div id="player-inputs">
+                <div class="player-input-group"><i class="fa-solid fa-user"></i><input type="text" id="player1-name" placeholder="Nama Pemain 1" value="Pemain 1"></div>
+                <div class="player-input-group"><i class="fa-solid fa-user"></i><input type="text" id="player2-name" placeholder="Nama Pemain 2" value="Pemain 2"></div>
+                <div class="player-input-group"><i class="fa-solid fa-user"></i><input type="text" id="player3-name" placeholder="Nama Pemain 3"></div>
+                <div class="player-input-group"><i class="fa-solid fa-user"></i><input type="text" id="player4-name" placeholder="Nama Pemain 4"></div>
+            </div>
+            
+            <div id="rules-selection">
+                <label for="building-rule-select">Aturan Membangun:</label>
+                <select id="building-rule-select">
+                    <option value="complex">Perlu 1 Komplek</option>
+                    <option value="direct">Bisa Langsung</option>
+                </select>
+            </div>
+            <button id="start-game-btn" disabled><i class="fa-solid fa-spinner fa-spin"></i> Memuat Kurs...</button>
+            <p id="rate-info"></p>
+        </div>
+    </div>
+
+    <div id="game-container" style="display: none;">
+        <div id="board-container">
+            <div id="center-logo">MONOPOLI</div>
+            <div id="board"></div>
+        </div>
+        
+        <div id="ui-panel">
+            <div id="players-card" class="ui-card">
+                <h2><i class="fa-solid fa-users"></i> Pemain</h2>
+                <div id="players"></div>
+            </div>
+
+            <div id="controls" class="ui-card">
+                <h2 id="current-player-turn">Giliran: ...</h2>
+                <div id="dice-result"></div>
+                <div id="action-buttons">
+                    <button id="roll-dice-btn"><i class="fa-solid fa-dice"></i> Kocok Dadu</button>
+                    <button id="buy-property-btn" style="display: none;"><i class="fa-solid fa-cart-plus"></i> Beli Properti</button>
+                    <button id="pay-fine-btn" style="display: none;"><i class="fa-solid fa-gavel"></i> Bayar Denda</button>
+                    <button id="end-turn-btn" style="display: none;"><i class="fa-solid fa-forward"></i> Akhiri Giliran</button>
+                </div>
+            </div>
+
+            <div id="assets-panel" class="ui-card" style="display: none;">
+                <h2><i class="fa-solid fa-city"></i> Aset Milikmu</h2>
+                <div id="player-assets-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="parking-modal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fa-solid fa-parking"></i> Parkir Gratis!</h3>
+            <p>Anda mendarat di Parkir Bebas. Pilih salah satu properti di bawah ini untuk pindah secara gratis.</p>
+            <select id="parking-destination-select"></select>
+            <button id="parking-confirm-btn">Pergi ke Sana</button>
+        </div>
+    </div>
+
+    <div id="certificate-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="certificate-content"></div>
+        </div>
+    </div>
+    
+   <div id="card-modal" class="modal">
+        <div class="card-modal-content">
+            <div class="card-header">
+                <h2 class="card-title"></h2>
+            </div>
+            <div class="card-body">
+                <div class="card-icon"></div>
+                <p class="card-description"></p>
+            </div>
+            <div class="card-footer">
+                <button id="card-ok-btn">Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
